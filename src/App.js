@@ -3,20 +3,19 @@ import React, { Component } from 'react';
 import Footer from './components/Footer';
 
 import caozinho1 from './assets/yorkshire-terrier.png';
-import caozinho2 from './caozinho1.jpg';
+import caozinho2 from './assets/caozinho1.jpg';
 import caozinho3 from './assets/maltes.jpeg';
 import caozinho4 from './assets/rottweiler.jpg';
 import gatinho5 from './assets/scottishfold.jpeg';
 
 import './App.css';
-import logo from './logo.svg';
 
 class App extends Component {
 
   constructor(props){
     super(props);
     this.state = {
-      cadastro: [
+      register: [
         { 
           id: 1,
           'name': 'Evelyn',
@@ -81,44 +80,65 @@ class App extends Component {
     }
   }
 
+  
+  renderPeople = () => {
+    return this.state.register.map(people => {
+      return (
+        <div className="App_register">
+          <ul key={people.id} className="App_nameList">
+            <li>{people.name}</li>
+            <li>{people.age}</li>
+          </ul>
+          <button className="btn"
+            onClick={() => {
+              this.renderDescritionEmployee(people);
+            }}
+          >
+            <p>Animal</p>
+          </button>
+        </div>
+      );
+    });
+  }
+
+  renderDescritionEmployee = people => {
+    this.setState({
+      isShow: true,
+      selectedRegister: people
+    });
+    console.log(this.state.isShow);
+  };
+
+  renderShowModalAnimal = () => {
+    const { selectedRegister } = this.state;
+      return (
+        <div className="App-feed">
+          <h3 className="App-feed-title">Pets</h3>
+          <div className="App-feed-firstNews">
+            <div className="App-feed-firstNews--content">
+              <ul key={selectedRegister.animal.id} className="App_nameList">
+                <li>{selectedRegister.animal.type}</li>
+                <li>{selectedRegister.animal.breed}</li>
+                <li>{selectedRegister.animal.whatsHappened}</li>
+              </ul>
+            </div> 
+          </div>
+          <button className="btn_modal" onClick={this.renderClose}>Close Modal</button>
+        </div>
+      )
+    }
+
+  renderClose = ev => {
+    this.setState({ isShow: false });
+  };
+  
   render() {
     return (
       <div className="App">
         <h1>Bem na Web!</h1>
         <header className="App-header">
-          <div className="App-feed">
-            <h3 className="App-feed-title">Pets</h3>
-            <div className="App-feed-firstNews">
-              <div className="App-feed-firstNews--content">
-                {
-                  this.state.cadastro.map(cadastro => {
-                    return(
-                      <div>
-                        {cadastro.animal.pic}
-                      </div> 
-                    )
-                  })
-                }
-              </div>
-            </div>
-          </div>
-          <div className="App-cadastro">
-            {
-              this.state.cadastro.map(cadastro => {
-                return (
-                  <ul key={cadastro.id} className="App_nameList">
-                    <li>{cadastro.name}</li>
-                    <li>{cadastro.age}</li>
-                    <ul>
-                      <li>{cadastro.animal.type}</li>
-                      <li>{cadastro.animal.breed}</li>
-                      <li>{cadastro.animal.whatsHappened}</li>
-                    </ul>
-                  </ul>
-                )
-              })
-            }
-          </div>
+          {this.renderPeople()}
+          {this.state.isShow && this.renderShowModalAnimal()}
         </header>
         <Footer />
       </div>
@@ -127,3 +147,8 @@ class App extends Component {
 }
 
 export default App;
+
+//{ this.state.show && this.renderShowModal }
+// mesma coisa que
+//{ this.state.show === true ? this.renderShowModal: null }
+

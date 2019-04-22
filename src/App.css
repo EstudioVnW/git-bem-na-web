@@ -23,11 +23,15 @@
   height: 500px;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   flex-direction: column;
   background-color:white;
 }
 .App-feed-title{
   color: #000;
+}
+.App-feed-firstNews{
+  width: 90%;
 }
 .App-imgNoticia{
   width: 40%;
@@ -35,7 +39,7 @@
 }
 .App-feed-firstNews{
   display: flex;
-  align-items: flex-start; 
+  align-items: center; 
   flex-direction: column;
   overflow-y: scroll;
 }
@@ -44,15 +48,41 @@
   align-items: center;
   flex-direction: column;
 }
-.App-cadastro{
-  color: #fff;
-}
-.App-nameList{
+.App_register{
   width: 12%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #fff;
+  border: 1px solid #fff;
+}
+.App_nameList{
+  width: 100%;
   height: 30%;
   display: flex;
   align-items: center;
   flex-direction: column;
   list-style: none;
-  border: 1px solid #fff;
+}
+.btn{
+  width: 70%;
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+.btn_modal{
+  width: 40%;
+  background-color: #fff;
+  border: #282c34 solid 1px;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+.btn:hover{
+  background-color: #dddfe4;
+}
+.btn_modal:hover{
+  background-color: #dddfe4;
 }
