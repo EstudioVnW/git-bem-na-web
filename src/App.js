@@ -84,11 +84,11 @@ class App extends Component {
   renderPeople = () => {
     return this.state.register.map(people => {
       return (
-        <div>
+        <div className="App-register">
           <ul key={people.id} className="App_nameList">
             <li>{people.name}</li>
+            <li>{people.age}</li>
           </ul>
-
           <button
             onClick={() => {
               this.renderDescritionEmployee(people);
@@ -112,13 +112,18 @@ class App extends Component {
   renderShowModalAnimal = () => {
     const { selectedRegister } = this.state;
       return (
-        <div className="Modal">
-          <ul key={selectedRegister.animal.id} className="App_nameList">
-            <li>{selectedRegister.animal.type}</li>
-            <li>{selectedRegister.animal.breed}</li>
-            <li>{selectedRegister.animal.whatsHappened}</li>
-          </ul>
-          {selectedRegister.animal.pic}
+        <div className="App-feed">
+          <h3 className="App-feed-title">Pets</h3>
+          <div className="App-feed-firstNews">
+            <div className="App-feed-firstNews--content">
+              <ul key={selectedRegister.animal.id} className="App_nameList">
+                <li>{selectedRegister.animal.type}</li>
+                <li>{selectedRegister.animal.breed}</li>
+                <li>{selectedRegister.animal.whatsHappened}</li>
+              </ul>
+            </div> 
+          </div>
+          <button onClick={this.renderClose}>Close Modal</button>
         </div>
       )
     }
@@ -142,3 +147,8 @@ class App extends Component {
 }
 
 export default App;
+
+//{ this.state.show && this.renderShowModal }
+// mesma coisa que
+//{ this.state.show === true ? this.renderShowModal: null }
+
