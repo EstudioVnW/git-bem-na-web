@@ -84,12 +84,12 @@ class App extends Component {
   renderPeople = () => {
     return this.state.register.map(people => {
       return (
-        <div className="App-register">
+        <div className="App_register">
           <ul key={people.id} className="App_nameList">
             <li>{people.name}</li>
             <li>{people.age}</li>
           </ul>
-          <button
+          <button className="btn"
             onClick={() => {
               this.renderDescritionEmployee(people);
             }}
@@ -123,7 +123,7 @@ class App extends Component {
               </ul>
             </div> 
           </div>
-          <button onClick={this.renderClose}>Close Modal</button>
+          <button className="btn_modal" onClick={this.renderClose}>Close Modal</button>
         </div>
       )
     }
