@@ -79,7 +79,6 @@ class App extends Component {
       ]
     }
   }
-
   
   renderPeople = () => {
     return this.state.register.map(people => {
