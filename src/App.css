@@ -26,6 +26,7 @@
   align-items: center;
   flex-direction: column;
   background-color:white;
+  border: 8px solid #c7c7c7;
 }
 .App-feed-title{
   color: #000;
@@ -54,7 +55,7 @@
   align-items: center;
   flex-direction: column;
   color: #fff;
-  border: 1px solid #fff;
+  border: 1px solid #c7c7c7;
 }
 .App_nameList{
   width: 100%;
